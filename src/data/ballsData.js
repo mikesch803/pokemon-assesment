@@ -1,0 +1,1 @@
+export const ballsData = [{name:"poke ball", value:5},{name:"super potion", value:10},{name:"hyper potion", value:20},{name:"great ball", value:10}]

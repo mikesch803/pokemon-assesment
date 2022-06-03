@@ -1,0 +1,28 @@
+
+.avatar-pokemon {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.total-cost {
+display: flex;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.form-container {
+max-width: 20.5rem;
+margin: 2rem auto;
+border: 1px solid;
+border-radius: 1rem;
+padding: 2.5rem 0rem;
+background-color: #ffffff;
+}
+
+.transform {
+    transform: scale(1.5);
+}
