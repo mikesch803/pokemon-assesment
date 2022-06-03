@@ -7,27 +7,19 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Chips } from "../chips/Chips";
 import "./Form.css";
-import { SelectRegion } from "../region/SelectRegion";
 import { regionData } from "../../data/regionData";
-import { ItemModal } from "../modal/ItemModal";
 import { useCart } from "../../context/cart-context";
-
+import { ItemModal } from "../modal/ItemModal";
+import {Chips, SelectRegion} from '../index'
 export function Form() {
   const boxStyles = {
-    // maxWidth: "20.5rem",
-    // borderRadius: "1rem",
-    // border: "1px solid",
-    // paddingBottom: "1rem",
-    // padding: "1rem",
     margin: "0 2.5rem",
   };
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [editState, setEditState] = useState(false);
-
   const { itemInCart, form, setForm, formHandler } = useCart();
   const totalPrice = itemInCart?.reduce(
     (acc, curr) =>
@@ -36,9 +28,9 @@ export function Form() {
   );
 
   return (
-    <div className="form-container">
+    <div className="form-container" >
       <Box sx={boxStyles}>
-        <Typography variant="h4">Fill this form</Typography>
+        <Typography variant="h4" color="primary">Fill this form</Typography>
         <Typography variant="subtitle1">We'll use this info to dominate the poke world! Muhahahahah</Typography>
         <TextField
           sx={{ display: "block", width: "auto", marginBottom:"1rem" }}
@@ -46,6 +38,7 @@ export function Form() {
           label="Full name"
           variant="filled"
           onChange={(e) => setForm({ ...form, fullName: e.target.value })}
+          required
         />
         <TextField
           sx={{ display: "block", width: "auto" }}
@@ -53,6 +46,7 @@ export function Form() {
           label="Code name"
           variant="filled"
           onChange={(e) => setForm({ ...form, codeName: e.target.value })}
+          required
         />
         <Slider
           size="small"
@@ -60,6 +54,7 @@ export function Form() {
           aria-label="Small"
           valueLabelDisplay="auto"
           onChange={(e) => setForm({ ...form, distance: e.target.value })}
+          required
         />
         <p >
           How far is your nearest pokemon center? (In KMs)
@@ -70,8 +65,9 @@ export function Form() {
           {regionData
             .filter((item) => item.region === form?.region)
             .map((pokemon) => (
-              <li key={pokemon.name} className={`${form?.pokemon?'pokemon':''}`}>
-                <Avatar
+              <li key={pokemon.name}
+              >
+                <Avatar className="avatar-hover"
                   onClick={() =>
                     setForm({ ...form, pokemon: pokemon.name })
                   }

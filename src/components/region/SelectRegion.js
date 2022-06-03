@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import React from 'react'
 
-export  function SelectRegion({region, regionHandler, form, setForm}) {
+export  function SelectRegion({form, setForm}) {
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
     <InputLabel id="demo-simple-select-filled-label">What's your starting region ?</InputLabel>
@@ -10,7 +10,7 @@ export  function SelectRegion({region, regionHandler, form, setForm}) {
       id="demo-simple-select-filled"
       value={form.region}
       label="What's your starting region ?"
-    //   onChange={regionHandler}
+       required
       onChange={(e)=>setForm({...form, region:e.target.value})}
     >
       <MenuItem value="">

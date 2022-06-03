@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -15,7 +15,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import { ballsData } from "../../data/ballsData";
 import { useCart } from "../../context/cart-context";
-
+import './ItemModal.css'
 const style = {
   position: "absolute",
   top: "50%",
@@ -23,9 +23,10 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  maxWidth:'20.5rem',
+  borderRadius:'1rem'
 };
 
 export function ItemModal({open, handleOpen, handleClose, editState, setEditState}) {
@@ -33,7 +34,7 @@ export function ItemModal({open, handleOpen, handleClose, editState, setEditStat
   const {itemDetail, addToCart, setItemDetail, updateCart} = useCart();
   const totalPrice = itemDetail.selectedBallPrice * itemDetail.qty;
   return (
-    <div>
+    <div className="modal-container">
       <Fab size="small" color="primary" aria-label="add" onClick={handleOpen}>
         <AddIcon />
       </Fab>
@@ -44,7 +45,7 @@ export function ItemModal({open, handleOpen, handleClose, editState, setEditStat
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h3" component="h2">
+          <Typography id="modal-modal-title" color="primary" variant="h4" component="h2">
             Place your order
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
